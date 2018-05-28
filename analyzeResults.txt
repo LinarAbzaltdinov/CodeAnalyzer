@@ -1,0 +1,12 @@
+Expected NullPointerExceptions with stack trace:
+
+MainClass.solveD(in, out)
+(/Users/linarkou/Documents/Projects/playground/src/MainClass.java:11), columns 9-24
+out.printf("%.3f %.3f", min, max)
+(/Users/linarkou/Documents/Projects/playground/src/MainClass.java:41), columns 9-42
+
+out.close()
+(/Users/linarkou/Documents/Projects/playground/src/MainClass.java:16), columns 9-20
+
+c.toString()
+(/Users/linarkou/Documents/Projects/playground/src/MainClass.java:18), columns 9-21
