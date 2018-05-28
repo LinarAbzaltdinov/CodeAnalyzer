@@ -1,13 +1,11 @@
 package ru.abzaltdinov;
 
-import com.sun.tools.javac.util.Pair;
 import spoon.Launcher;
 import spoon.MavenLauncher;
 import spoon.reflect.CtModel;
 import spoon.reflect.code.*;
 import spoon.reflect.cu.SourcePosition;
 import spoon.reflect.declaration.CtExecutable;
-import spoon.reflect.declaration.CtParameter;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.reference.CtVariableReference;
 import spoon.reflect.visitor.filter.TypeFilter;
@@ -42,7 +40,7 @@ public class Main {
         launcher.getEnvironment().setNoClasspath(true); // optional
         launcher.buildModel();
         CtModel model = launcher.getModel();
-        printWriter.println("Expected NullPointerExceptions with stack trace:");
+        printWriter.println("Expected NullPointerExceptions(with stack trace):");
         List<CtExecutable<?>> executables = model.getElements(new TypeFilter<>(CtExecutable.class));
         executables.forEach(exec -> check(exec, new ArrayList<>(), new ArrayList<>()));
         printWriter.close();
