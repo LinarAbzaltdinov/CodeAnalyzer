@@ -72,8 +72,11 @@ public class Main {
                 stackTrace.add(ctStatement);
                 CtInvocation<?> invocation = (CtInvocation<?>) ctStatement;
                 CtExpression<?> target = invocation.getTarget();
-                if (target instanceof CtVariableAccess<?> && nullVars.contains(((CtVariableAccess<?>) target).getVariable())) {
-                    printNPEWarning(stackTrace);
+                if (target instanceof CtVariableAccess<?>) {
+                    CtVariableReference<?> variable = ((CtVariableAccess<?>) target).getVariable();
+                    if (nullVars.contains(variable)) {
+                        printNPEWarning(stackTrace, variable);
+                    }
                 }
                 ArrayList<Integer> indexesOfNullArgsInMethodInvocation = new ArrayList<>();
                 List<CtExpression<?>> arguments = invocation.getArguments();
@@ -109,7 +112,7 @@ public class Main {
                    && nullVars.contains(((CtVariableAccess<?>) ctExpression).getVariable());
     }
 
-    public static void printNPEWarning(ArrayList<CtStatement> trace) {
+    public static void printNPEWarning(ArrayList<CtStatement> trace, CtVariableReference<?> variable) {
         printWriter.println();
         for (CtStatement traceElement : trace) {
             SourcePosition position = traceElement.getPosition();
@@ -117,5 +120,6 @@ public class Main {
             String line = position + ", columns " + position.getColumn() + "-" + position.getEndColumn();
             printWriter.println(line);
         }
+        printWriter.println(variable + " can be NULL");
     }
 }
