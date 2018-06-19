@@ -5,7 +5,12 @@ It searches vars that not initialized / null / referenced to other null variable
 
 ## Usage
 1. Install [Maven](https://maven.apache.org/install.html)
-2. Run `mvn exec:java -Dexec.mainClass=ru.abzaltdinov.Main -Dexec.args="FILENAME"`, where FILENAME is source .java file or pom.xml of Maven project.
+2. Run 
+  ```
+  mvn clean install
+  mvn exec:java -Dexec.mainClass=ru.abzaltdinov.Main -Dexec.args="FILENAME"
+  ```
+  where FILENAME is source .java file or pom.xml of Maven project.
 
 ## Exmaple
 Example of output for [Test.java](Test.java):
