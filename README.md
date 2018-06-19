@@ -6,11 +6,13 @@ It searches vars that not initialized / null / referenced to other null variable
 ## Usage
 1. Install [Maven](https://maven.apache.org/install.html)
 2. Run 
-  ```
-  mvn clean install
-  mvn exec:java -Dexec.mainClass=ru.abzaltdinov.Main -Dexec.args="FILENAME"
-  ```
-  where FILENAME is source .java file or pom.xml of Maven project.
+```
+git clone https://github.com/LinarAbzaltdinov/CodeAnalyzer.git
+cd CodeAnalyzer/
+mvn clean install
+mvn exec:java -Dexec.mainClass=ru.abzaltdinov.Main -Dexec.args="Test.java"
+```
+where specify YOUR source .java file or pom.xml of Maven project instead of "Test.java".
 
 ## Exmaple
 Example of output for [Test.java](Test.java):
